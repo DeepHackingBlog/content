@@ -1,5 +1,5 @@
 ---
-name: "Alex Losantos Lizaso"
+name: "Axel Losantos Lizaso"
 website: "https://www.0x4xel.com/"
 github: "https://github.com/0x4xel"
 twitter: "https://x.com/0x4xel"

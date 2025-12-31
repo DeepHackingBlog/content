@@ -1,7 +1,7 @@
 ---
 id: "alteredsecurity-cartp-review"
 title: "CARTP Review - Certified Azure Red Team Professional 2023"
-author: "alex-losantos-lizaso"
+author: "axel-losantos-lizaso"
 publishedDate: 2023-06-30
 updatedDate: 2023-06-30
 image: "https://cdn.deephacking.tech/i/posts/alteredsecurity-cartp-review/alteredsecurity-cartp-review-0.webp"

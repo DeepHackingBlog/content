@@ -1,7 +1,7 @@
 ---
 id: "hacktricks-arte-review"
 title: "Hacktricks ARTE Review - Certified AWS Red Team Expert 2024"
-author: "alex-losantos-lizaso"
+author: "axel-losantos-lizaso"
 publishedDate: 2024-04-08
 updatedDate: 2024-04-08
 image: "https://cdn.deephacking.tech/i/posts/hacktricks-arte-review/hacktricks-arte-review-0.webp"
