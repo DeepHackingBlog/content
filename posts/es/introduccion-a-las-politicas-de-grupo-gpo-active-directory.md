@@ -15,7 +15,6 @@ lang: "es"
 
 Las GPO, esa característica del Directorio Activo que siempre mencionamos cuando hay alguna configuración o política que no entendemos y decimos: "será una GPO". En el artículo de hoy vamos a ver qué son y cómo funcionan.
 
-## Índice
 - [¿Qué son las políticas de grupo (GP)?](#qué-son-las-políticas-de-grupo-gp)
 - [Política de directorio activo VS Política local](#política-de-directorio-activo-vs-política-local)
   - [Política de grupo local](#política-de-grupo-local)

@@ -9,7 +9,7 @@ description: "Discover the evolution of Deep Hacking from its beginnings in 2021
 categories:
   - "miscellaneous"
 draft: false
-featured: true
+featured: false
 lang: "en"
 ---
 

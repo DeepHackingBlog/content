@@ -15,7 +15,6 @@ lang: "en"
 
 GPOs, that Active Directory feature we always mention when there's some configuration or policy we don't understand and we say: "it must be a GPO". In today's article, we're going to see what they are and how they work.
 
-## Table of Contents
 - [What are Group Policies (GP)?](#what-are-group-policies-gp)
 - [Active Directory Policy VS Local Policy](#active-directory-policy-vs-local-policy)
   - [Local Group Policy](#local-group-policy)
