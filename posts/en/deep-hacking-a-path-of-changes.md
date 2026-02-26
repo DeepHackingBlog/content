@@ -86,8 +86,7 @@ This part still needs to be defined, I have to run tests and properly define the
 - [GitHub](https://github.com/DeepHackingBlog)
 - [Twitter](https://twitter.com/deephackingblog)
 - [LinkedIn](https://www.linkedin.com/company/deep-hacking/)
-- [Discord Server (ESP)](https://discord.gg/TVcDmHduAm)
-- [Discord Server (ENG)](https://discord.gg/zYteVdgTpn)
+- [Discord Server](https://discord.gg/TVcDmHduAm)
 - [Twitch](https://www.twitch.tv/sikumy)
 
 And if you want to support the blog financially, you can find the affiliations on the right side of the articles. Also, we have a BuyMeACoffee, or as I like to call it more:

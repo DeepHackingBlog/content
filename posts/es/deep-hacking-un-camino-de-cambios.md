@@ -86,8 +86,7 @@ Esta parte tiene que definirse aún todavía, tengo que realizar pruebas y defin
 - [GitHub](https://github.com/DeepHackingBlog)
 - [Twitter](https://twitter.com/deephackingblog)
 - [LinkedIn](https://www.linkedin.com/company/deep-hacking/)
-- [Servidor de Discord (ESP)](https://discord.gg/TVcDmHduAm)
-- [Servidor de Discord (ENG)](https://discord.gg/zYteVdgTpn)
+- [Servidor de Discord](https://discord.gg/TVcDmHduAm)
 - [Twitch](https://www.twitch.tv/sikumy)
 
 Y si queréis apoyar al blog económicamente, podéis encontrar las afiliaciones en la parte derecha de los artículos. Asimismo, tenemos un BuyMeACoffee, o como me gusta llamarlo más:
