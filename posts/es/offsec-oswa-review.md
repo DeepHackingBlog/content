@@ -2,8 +2,8 @@
 id: "offsec-oswa-review"
 title: "OSWA Review - OffSec Web Assessor 2026"
 author: "matias-schiappacasse"
-publishedDate: 2026-04-30
-updatedDate: 2026-04-30
+publishedDate: 2026-05-18
+updatedDate: 2026-05-18
 image: ""
 description: "Mi experiencia personal rindiendo la certificación OSWA de OffSec: preparación, el día del examen y consejos para aprobar. Review general"
 categories: 
@@ -13,9 +13,9 @@ featured: false
 lang: "es"
 ---
 
-![OSWA Banner](./images/banner.png)
-
 Hola, espero se encuentren bien. El día de hoy traigo un artículo interesante (a mi parecer) y la primera versión en español (creo): la revisión, experiencia personal y algunos consejos con la certificación **OSWA** y el curso [WEB-200](https://www.offsec.com/courses/web-200/) de [OffSec](https://www.offsec.com/).
+
+![OSWA Banner](./images/banner.png)
 
 Estoy algo emocionado escribiendo este artículo, ya que cumplí un sueño, objetivo que tenía hace muchos años, y por fin se dieron las condiciones.
 
@@ -24,7 +24,18 @@ El fin de semana pasado (**18/04/2026**) rendí el examen de la certificación y
 ![Certificado OSWA - lo censuro no quiero autodoxearme tan easy](./images/oswa-cert.png)
 
 De antemano pido disculpas si existe algún error ortográfico o de redacción. Espero que disfruten y les sea de utilidad.
-<hr>
+
+---
+
+* [Contexto](#contexto)
+* [¿Por qué esta certificación y no otra?](#por-qué-esta-certificación-y-no-otra)
+* [Preparación (Curso y laboratorios)](#preparación-curso-y-laboratorios)
+* [Día del examen](#día-del-examen)
+* [Informe](#informe)
+* [Opinión personal](#opinión-personal)
+* [Consejos](#consejos)
+* [Referencias](#referencias)
+
 
 ## Contexto
 De manera general, la certificación «**OffSec Web Assessor**» es ofrecida por [OffSec](https://www.offsec.com) la cual se centra exclusivamente en los fundamentos de la seguridad de aplicaciones web y la explotación de vulnerabilidades tales como: XSS, CSRF, SQLi, SSRF, XXE, CORS, SSTI y algunas otras.
@@ -33,7 +44,7 @@ Esta certificación y el curso tienen un valor de **1,749** dólares (el plan m�
 
 La certificación trae el siguiente curso llamado «**WEB-200**», el cual ofrece una visión general y relativamente superficial de algunos conceptos/aspectos/tópicos, pero suficientes dado el contexto de la certificación (entiéndase como el nivel o al público dirigido).
 
-Tiene una duración total de **231** horas de contenido y, a través de sus 16 módulos, laboratorios de desafío, el temario enseña a realizar reconocimiento y a explotar vulnerabilidades como **XSS**, **SQLi** y **SSRF** utilizando herramientas estándar como Burp Suite y, pues, **Kali Linux** (obvio, es OffSec).
+Tiene una duración total de **231** horas de contenido y, a través de sus 16 módulos y laboratorios de desafío, el temario enseña a realizar reconocimiento y a explotar vulnerabilidades como **XSS**, **SQLi** y **SSRF** utilizando herramientas estándar como Burp Suite y, pues, **Kali Linux** (obvio, es OffSec).
 
 En resumen, es un entrenamiento estructurado y directo al grano para darte la base práctica necesaria para rendir el examen **OSWA**.
 
@@ -42,21 +53,14 @@ Adicionalmente, el curso trae un total de **11** máquinas para que puedas pract
 Con base en la información proporcionada por **Offensive Security** los estudiantes que finalicen el curso serán capaces de:
 
 - Entender y explotar diferentes tipos de vulnerabilidades **Cross-Site Scripting** (XSS).
-
 - Utilizar herramientas de fuzzing para descubrir vulnerabilidades de «**inyección SQL**».
-
-- Aprender sobre la política «**Same-Origin**» y cómo interactuar con peticiones “**cross-origin**“.
-
+- Aprender sobre la política «**Same-Origin**» y cómo interactuar con peticiones “**cross-origin**”.
 - Identificar y explotar vulnerabilidades «**Cross-Site Request Forgery** ([CSRF](https://owasp.org/www-community/attacks/csrf))».
-
 - Aprender a utilizar herramientas como **Burp Suite**, **Nmap** y **Gobuster** para el análisis de aplicaciones web.
-
 - Aprender la detección de parámetros, archivos y directorios a través de herramientas como **Wfuzz** y **Hakrawler**.
-
 - Entre otros…
 
-> Para mayor informacion: https://www.offsec.com/courses/web-200/.
-<hr>
+> Para mayor información: [Página del curso WEB-200 de OffSec](https://www.offsec.com/courses/web-200/).
 
 ## ¿Por qué esta certificación y no otra?
 Aquí seré bien sincero, ya que esta decisión está bastante influenciada por una percepción muy personal. El factor principal para rendir esta certificación fue que hace tiempo di la **BSCP** y reprobé. Eso me desmotivó bastante y dejé de meterle al estudio en general [entiendo totalmente que el fracaso es parte del camino al éxito, pero a veces las emociones o pensamientos me superan].
@@ -64,7 +68,6 @@ Aquí seré bien sincero, ya que esta decisión está bastante influenciada por 
 Además de esto, notaba en mí ciertas falencias técnicas. Si bien podía explotar con éxito vulnerabilidades y cosas así, no tenía del todo claro el trasfondo, o más bien sentía que mi repertorio de técnicas era acotado (espero se entienda el punto que deseo transmitir). Sentía la necesidad de repasar conceptos, mejorar mis principios y construir una base más sólida sobre cosas básicas que justamente tocaba este temario; por lo tanto, creo que la mejor alternativa fue haber hecho el curso.
 
 Adicionalmente, era un sueño para mí y una muy buena oportunidad para conocer y acercarme a **OffSec**.
-<hr>
 
 ## Preparación (Curso y laboratorios)
 Estudié el curso por casi dos meses (quizás un poquito menos). En mi caso, influyó bastante el tema del tiempo, el trabajo, el entrenamiento y todo eso, pero seguro que si estás más libre y le tryhardeas, puedes terminar antes. De todas formas, recomiendo que te tomes tu tiempo.
@@ -89,7 +92,6 @@ Además, trata de no leer la descripción de las máquinas para que no sepas con
 Lo otro: con las máquinas que hagas, redacta un informe detallando los hallazgos. Es importantísimo que practiques el formato y los criterios que te van a exigir en el reporte real.
 
 Otra cosa: enfócate solamente en vulnerabilidades de aplicaciones web. No te pongas a escalar privilegios si logras **RCE**, ya que para el examen no es relevante ni requerido. Procura optimizar tu tiempo y hacer solo las tareas que aporten al contexto de la certificación. ✌😉
-<hr>
 
 ## Día del examen
 Bueno, yo agendé el examen para un día sábado a las **21:00** horas. Sin embargo, por razones que desconozco, me lo cambiaron a las **20:00** de ese mismo día y no me había llegado ninguna notificación ni correo informando sobre este cambio. Menos mal se me ocurrió revisar la plataforma donde se agendan; si no, probablemente me hubiesen cancelado el examen por la demora. Ajeno a ese detalle, no tuve ningún otro problema o malentendido con **OffSec**.
@@ -118,8 +120,8 @@ Llegó la hora final, me cortaron la **VPN**, me despedí del proctor y ya solo 
 
 > No recuerdo al cien por ciento cada minuto de cómo fue el examen, así que los tiempos que comenté son más bien una aproximación para que no se lo tomen tan literal o seriamente. <br> <br> La verdad es que no es tan terrible el **proctored**. Para las personas que odian las cámaras o se sienten incómodas con eso, les aseguro que luego de un rato se te olvida por completo que te están viendo, así que tranqui. ✌
 
-Luego de unos minutos, me acosté en la cama. En eso entró mi madre y me dijo: '¿Y tú? ¿Qué haces acostado? ¡Haz el informe!' xD. Pero le respondí que estaba cansado, así que lo haría mañana temprano... (Seguramente el teslita se iba a quedar dormido rápido y despertar temprano un día lunes que tiene libre xDD) - presentia que tenía que haber avanzado algo esa misma noche, ya que yo soy muy lento para documentar.
-![Jerry Meme](./images/jerry-meme.png)
+Luego de unos minutos, me acosté en la cama. En eso entró mi madre y me dijo: '¿Y tú? ¿Qué haces acostado? ¡Haz el informe!' xD. Pero le respondí que estaba cansado, así que lo haría mañana temprano... (Seguramente el teslita se iba a quedar dormido rápido y despertar temprano un día lunes que tiene libre xDD) - presentía que tenía que haber avanzado algo esa misma noche, ya que yo soy muy lento para documentar.
+![Meme sobre procrastinar la escritura del informe del examen](./images/jerry-meme.png)
 
 Como era de esperar, terminé despertándome tipo **11:50** y empecé con el informe recién a las **13:20**. Mientras lo hacía, me di cuenta de que no había tomado las capturas con el formato correcto para la sección de las flags; me dio un momento de locura y me dio error Windows. Pero como yo soy un hombre que resuelve, me salvé: tomé las capturas de nuevo del Burp como pude, saqué algunas del navegador con las pestañas que todavía tenía abiertas y listo, ahí resolví. Lo peor de todo es que me había pasado con **3** o **4** flags. Luego de esa pérdida de tiempo, retomé a máxima velocidad con la redacción de los hallazgos.
 
@@ -130,20 +132,18 @@ Terminé el informe a las **19:00**, lo exporté, le di una revisada rápida y a
 Me quedé muy perseguido (preocupado) con el tema del formato; según yo, no había cumplido e iba a reprobar por culpa de esos errores tontos. Literal, estuve pensando todo el día en eso. Llegó el día martes y en el trabajo no lograba concentrarme. Luego mi abuelo me preguntó cómo me había ido, le conté sobre los errores que había cometido con el informe, le expresé mi preocupación y noté en su cara la decepción máxima (como diciendo “este es aweonao (tonto) y es para pegarle” 😂).
 
 Pasaron los días y el miércoles en la mañana soñé que me llegaba el correo con los resultados y que había aprobado. Literal, desperté asustado, la primera cosa que hice fue buscar el correo y, obviamente, no estaba.
-![locura](./images/locura.jpeg)
+![Reacción al esperar los resultados del examen OSWA](./images/locura.jpeg)
 
 Trabajé de manera normal y, luego del trabajo, me quedé dormido. Habré despertado tipo **22:50**; revisé la bandeja y ahí estaba el correo con los resultados. No lo podía creer. No lo quería abrir (serios problemas de confianza el hombre 😎). Dije en mi cabeza: ‘Ya, ábrelo, total, reprobaste’; empecé a leer y, pues, aprobé.
 
 Fue un alivio máximo y felicidad a tope. Me puse a bailar, puse mi Russian hardbass a full y listo, xD. Esa fue mi experiencia con el examen; espero que te haya gustado y haberte sacado alguna risa.
-<hr>
 
 ## Informe
 Para el informe utilicé [SysReptor](https://sysreptor.com/) y la plantilla, pero hice algunas modificaciones con respecto a la paleta de colores, estilo e imágenes (como saben, me gusta que el informe se vea bonito).
-![Template Original](./images/report.png)
-![Template custom](./images/custom.png)
+![Plantilla original de SysReptor para el informe de la certificación OSWA](./images/report.png)
+![Plantilla de SysReptor personalizada con paleta de colores y estilo modificados](./images/custom.png)
 
 Igual la versión que envié no es **100%** de mi estilo y gusto, pero lo suficiente como para sentirme cómodo. Una vez que tenga la plantilla modificada y con el estilo que quiero, la publicaré aquí (cuenta la leyenda que dije lo mismo en una review anterior y nunca subí la template).
-<hr>
 
 ## Opinión personal
 Con respecto al curso, me gustó mucho; aprendí bastantes cosas y repasé sobre todo conceptos básicos. Quedé con una base más sólida y en el trabajo he podido poner en práctica mis nuevas habilidades y conocimientos, así que superfeliz.
@@ -151,92 +151,54 @@ Con respecto al curso, me gustó mucho; aprendí bastantes cosas y repasé sobre
 El examen lo encontré demasiado **CTF style** (en el buen sentido, eso sí), cosa que no me gustó mucho. Sentí que las máquinas del curso eran bastante más complejas que el propio examen. Ojo, no estoy diciendo que el examen sea fácil (ya que hubo una máquina de la que derechamente no logré sacar ninguna vulnerabilidad o flag). Agradezco realmente que los labs hayan tenido una mayor dificultad porque, de cierta manera, te preparan y te ayudan a pensar un poco más allá o a simplemente seguir intentando, lo cual me sirvió muchísimo durante la prueba real.
 
 Si me preguntan si recomiendo esta certificación: sí, totalmente. Pero depende mucho de quién seas y qué estés buscando. Si eres alguien que quiere entrar al mundo del pentesting web, o si ya tienes algo de experiencia pero sientes que te falta ordenar los conceptos y construir una base teórica y práctica más sólida (justo lo que me pasaba a mí), te va a venir excelente. Ahora bien, si ya tienes mucha experiencia en el ámbito web o buscas un entorno realista y no tan enfocado en el formato **CTF**, quizás se te quede corta y te convenga apuntar a algo más avanzado. Pero como punto de partida o para consolidar conocimientos, es una buena opción a mi parecer.
-<hr>
 
 ## Consejos
 Aquí dejo algunos tips que pueden ayudarte a prepararte mejor y a aprobar:
 
 - Tomar notas.
-
 - Leer detenidamente el material de estudio.
-
 - Hacer resúmenes estructurados y centrarte en lo más relevante.
-
 - Haz tus propios cheat sheets.
-
 - No vayas a por las soluciones/pistas si no es por aprendizaje.
-
 - Practica con máquinas casi todos los días.
-
 - Haz simulacros del examen.
-
 - Redacta y practica la documentación de vulnerabilidades.
-
 - Si no entiendes algo, busca, no te quedes con esos vacíos.
-
 - Try Harder!
-
 - Desarrolla una metodología propia con la que te sientas cómodo.
-
 - Practica y entiende las vulnerabilidades.
-
 - Mantén un orden y toma notas de las máquinas, declara endpoints, tecnologías, usuarios, etc.
-
 - No dejes el informe para el final. Si encuentras alguna vulnerabilidad, ve pegando las fotos en la PoC.
-
 - Toma captura de pantallas completas.
-
 - Sal a caminar o tomar aire fresco.
-
 - No vayas a lo loco.
-
 - Prioriza y aprovecha bien el tiempo.
-
 - Cuando te sientas perdido, haz una pequeña retroalimentación de lo que tienes y revisa si no te quedan flujos pendientes por revisar.
-
 - Toma descansos y mantente hidratado.
-
 - Constancia.
-<hr>
 
 ## Referencias
 A continuación adjunto algunos enlaces que me sirvieron y reviews que leí en su momento.
 
-- https://emvee-nl.github.io/posts/OSWA-a-different-course-on-web-attacks/#practice-makes-perfect
-
-- https://help.offsec.com/hc/en-us/articles/4410105650964-WEB-200-Foundational-Web-Application-Assessments-with-Kali-Linux-OSWA-Exam-Guide
-
-- https://www.offsec.com/courses/web-200/
-
-- https://portswigger.net/web-security/all-labs#cross-site-scripting
-
-- https://portswigger.net/web-security/all-labs#cross-site-request-forgery-csrf
-
-- https://portswigger.net/web-security/all-labs#cross-origin-resource-sharing-cors
-
-- https://portswigger.net/web-security/all-labs#xml-external-entity-xxe-injection
-
-- https://portswigger.net/web-security/all-labs#server-side-request-forgery-ssrf
-
-- https://portswigger.net/web-security/all-labs#os-command-injection
-
-- https://portswigger.net/web-security/all-labs#server-side-template-injection
-
-- https://portswigger.net/web-security/all-labs#path-traversal
-
-- https://portswigger.net/web-security/all-labs#sql-injection
-
-- https://portswigger.net/web-security/access-control/lab-insecure-direct-object-references
-
-- https://portswigger.net/web-security/access-control/lab-user-id-controlled-by-request-parameter-with-password-disclosure
-
-- https://developer.mozilla.org/es/docs/Web/
-
-- https://tryhackme.com/challenges
-<hr>
+- [OSWA: Un curso diferente sobre ataques web – emvee-nl](https://emvee-nl.github.io/posts/OSWA-a-different-course-on-web-attacks/#practice-makes-perfect)
+- [Guía del examen WEB-200 OSWA – Centro de ayuda de OffSec](https://help.offsec.com/hc/en-us/articles/4410105650964-WEB-200-Foundational-Web-Application-Assessments-with-Kali-Linux-OSWA-Exam-Guide)
+- [Página del curso WEB-200 – OffSec](https://www.offsec.com/courses/web-200/)
+- [PortSwigger labs: Cross-Site Scripting (XSS)](https://portswigger.net/web-security/all-labs#cross-site-scripting)
+- [PortSwigger labs: Cross-Site Request Forgery (CSRF)](https://portswigger.net/web-security/all-labs#cross-site-request-forgery-csrf)
+- [PortSwigger labs: Cross-Origin Resource Sharing (CORS)](https://portswigger.net/web-security/all-labs#cross-origin-resource-sharing-cors)
+- [PortSwigger labs: XML External Entity (XXE) injection](https://portswigger.net/web-security/all-labs#xml-external-entity-xxe-injection)
+- [PortSwigger labs: Server-Side Request Forgery (SSRF)](https://portswigger.net/web-security/all-labs#server-side-request-forgery-ssrf)
+- [PortSwigger labs: Inyección de comandos del sistema operativo](https://portswigger.net/web-security/all-labs#os-command-injection)
+- [PortSwigger labs: Server-Side Template Injection (SSTI)](https://portswigger.net/web-security/all-labs#server-side-template-injection)
+- [PortSwigger labs: Path traversal](https://portswigger.net/web-security/all-labs#path-traversal)
+- [PortSwigger labs: Inyección SQL](https://portswigger.net/web-security/all-labs#sql-injection)
+- [PortSwigger lab: Referencias directas a objetos inseguros (IDOR)](https://portswigger.net/web-security/access-control/lab-insecure-direct-object-references)
+- [PortSwigger lab: ID de usuario controlado por parámetro de solicitud con divulgación de contraseña](https://portswigger.net/web-security/access-control/lab-user-id-controlled-by-request-parameter-with-password-disclosure)
+- [MDN Web Docs](https://developer.mozilla.org/es/docs/Web/)
+- [Retos de TryHackMe](https://tryhackme.com/challenges)
 
 Espero te sirva y muchas gracias por leer ;)
 
 Deja algún comentario y, cualquier cosa, mi DM está abierto. 😜
 
-Estar aquí igual es un sueño =) Gracias Sikumy
+Estar aquí igual es un sueño =) Gracias Sikumy.

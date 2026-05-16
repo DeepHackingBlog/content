@@ -2,8 +2,8 @@
 id: "offsec-oswa-review"
 title: "OSWA Review - OffSec Web Assessor 2026"
 author: "matias-schiappacasse"
-publishedDate: 2026-04-30
-updatedDate: 2026-04-30
+publishedDate: 2026-05-18
+updatedDate: 2026-05-18
 image: ""
 description: "My personal experience taking the OffSec OSWA certification: preparation, exam day, and tips for passing the WEB-200."
 categories:
@@ -13,9 +13,9 @@ featured: false
 lang: "en"
 ---
 
-![OSWA Banner](./images/banner.png)
+Hello, I hope you are all doing well. Today I bring you an interesting article (in my opinion) and, I believe, the first Spanish-language version: a review, personal experience, and some tips regarding the **OSWA** certification and the [WEB-200](https://www.offsec.com/courses/web-200/) course by [OffSec](https://www.offsec.com/).
 
-Hello, I hope you are all doing well. Today I bring you an interesting article (in my opinion) and perhaps the first version in Spanish: a review, personal experience, and some tips regarding the **OSWA** certification and the [WEB-200](https://www.offsec.com/courses/web-200/) course by [OffSec](https://www.offsec.com/).
+![OSWA Banner](./images/banner.png)
 
 I am quite excited writing this article, as I fulfilled a dream and a goal I had for many years, and finally, the conditions were right.
 
@@ -27,20 +27,19 @@ In advance, I apologize if there are any spelling or grammar mistakes. I hope yo
 
 ---
 
-## Index
 * [Context](#context)
-* [Why this certification and not another?](#why--this--certification--and--not--another)
-* [Preparation (Course and labs)](#preparation--course--and--labs)
-* [Exam Day](#exam--day)
-* [The Report](#the--report)
-* [Personal Opinion](#personal--opinion)
+* [Why this certification and not another?](#why-this-certification-and-not-another)
+* [Preparation (Course and labs)](#preparation-course-and-labs)
+* [Exam Day](#exam-day)
+* [The Report](#the-report)
+* [Personal Opinion](#personal-opinion)
 * [Tips](#tips)
 * [References](#references)
 
 ## Context
-In general terms, the "OffSec Web Assessor" certification is offered by [OffSec](https://www.offsec.com), which focuses exclusively on the fundamentals of web application security and the exploitation of vulnerabilities such as: XSS, CSRF, SQLi, SSRF, XXE, CORS, SSTI, and a few others.
+In general terms, the "**OffSec Web Assessor**" certification is offered by [OffSec](https://www.offsec.com), which focuses exclusively on the fundamentals of web application security and the exploitation of vulnerabilities such as: XSS, CSRF, SQLi, SSRF, XXE, CORS, SSTI, and a few others.
 
-This certification and the course are priced at **1,749** dollars (the cheapest plan, if you can call that cheap), you get a total of **90** days of access and **1** exam attempt. For the test itself, you have **23** hours and **45** minutes to complete it, and once that time is up, you have an additional **24** hours to upload the report with your documentation.
+This certification and the course are priced at **1,749** dollars (the cheapest plan, if you can call that cheap); you get a total of **90** days of access and **1** exam attempt. For the test itself, you have **23** hours and **45** minutes to complete it, and once that time is up, you have an additional **24** hours to upload the report with your documentation.
 
 The certification includes the course called "**WEB-200**", which offers a general and relatively superficial overview of some concepts/aspects/topics, but sufficient given the context of the certification (meaning the level or the target audience).
 
@@ -52,14 +51,14 @@ Additionally, the course comes with a total of **11** machines for you to practi
 
 Based on the information provided by **Offensive Security**, students who complete the course will be able to:
 * Understand and exploit different types of **Cross-Site Scripting** (XSS) vulnerabilities.
-* Use fuzzing tools to discover "SQL injection" vulnerabilities.
-* Learn about the "**Same-Origin**" policy and how to interact with "cross-origin" requests.
+* Use fuzzing tools to discover "**SQL injection**" vulnerabilities.
+* Learn about the "**Same-Origin**" policy and how to interact with "**cross-origin**" requests.
 * Identify and exploit "**Cross-Site Request Forgery** ([CSRF](https://owasp.org/www-community/attacks/csrf))" vulnerabilities.
 * Learn to use tools like **Burp Suite**, **Nmap**, and **Gobuster** for web application analysis.
 * Learn parameter, file, and directory detection through tools like **Wfuzz** and **Hakrawler**.
-* Among others…
+* Among others...
 
-> For more information: [https://www.offsec.com/courses/web-200/](https://www.offsec.com/courses/web-200/).
+> For more information: [OffSec WEB-200 course page](https://www.offsec.com/courses/web-200/).
 
 ---
 
@@ -75,9 +74,9 @@ Additionally, it was a dream for me and a very good opportunity to get to know a
 ## Preparation (Course and labs)
 I studied the course for almost two months (maybe a little less). In my case, time, work, training, and all that had a significant influence, but I'm sure if you are freer and you tryhard, you can finish sooner. In any case, I recommend taking your time.
 
-In my opinion, the material is quite complete and very direct regarding relevant concepts, they don't beat around the bush. There are modules that are more extensive than others and, as I mentioned at the beginning, I noticed that there are topics touched upon superficially (I think because of the target audience). However, this is quickly solved with a Google search to make it clear.
+In my opinion, the material is quite complete and very direct regarding relevant concepts; they don't beat around the bush. There are modules that are more extensive than others and, as I mentioned at the beginning, I noticed that there are topics touched upon superficially (I think because of the target audience). However, this is quickly solved with a Google search to make it clear.
 
-Something key during study: taking notes, making structured summaries with the most relevant points, marking keywords, and using alternative reliable sources if you don't understand something or want to go deeper. I also highly recommend creating your own cheat sheets, whether with `payloads` for different vulnerabilities or theoretical concepts.
+Something key during study: taking notes, making structured summaries with the most relevant points, marking keywords, and using reliable alternative sources if you don't understand something or want to go deeper. I also highly recommend creating your own cheat sheets, whether with `payloads` for different vulnerabilities or theoretical concepts.
 
 If you are wondering if the course is enough for the exam, I would say yes. If you give it the necessary importance and study conscientiously, it is more than enough to understand things and pass. Regardless, I relied on external resources, especially **PortSwigger** (Web Security Academy) to practice specific vulnerabilities in their labs.
 
@@ -111,39 +110,39 @@ Without further ado, OffSec recommends connecting at least 15 minutes early for 
 
 Once it turned **8:00 PM**, I received an email with all the information needed for the exam. I successfully connected to the **VPN** and created the corresponding folders for the **5** exam machines.
 
-I started in order. After about **30** minutes I managed to get my first flag (`local.txt`). As a strategy, I documented the vulnerability I found simultaneously (only taking screenshots and organizing the **PoC**), I knew if I started writing text, I would lose valuable time, and that's what the extra report time is for.
+I started in order. After about **30** minutes I managed to get my first flag (`local.txt`). As a strategy, I documented the vulnerability I found simultaneously (only taking screenshots and organizing the **PoC**); I knew that if I started writing text, I would lose valuable time, and that's what the extra report time is for.
 
-After a while, I got stuck on that same machine; I couldn't find the second vulnerability to get the `proof.txt`, so I decided to change targets. My rule was: if I saw that it took me more than **40** minutes to get a flag, I would change machines immediately so as not to waste time. That tactic was working well for me, between **11:40 PM** and **12:50 AM** I already had a total of 3 flags. However, after that, I got really blocked. I couldn't find any new vulnerability, so I started to get desperate and my pace dropped. Noticing it, I decided to pause for a bit, asked the proctor for a break to go to the bathroom, wash my face, drink water, and eat something.
+After a while, I got stuck on that same machine; I couldn't find the second vulnerability to get the `proof.txt`, so I decided to change targets. My rule was: if I saw that it took me more than **40** minutes to get a flag, I would change machines immediately so as not to waste time. That tactic was working well for me; between **11:40 PM** and **12:50 AM** I already had a total of 3 flags. However, after that, I got really blocked. I couldn't find any new vulnerability, so I started to get desperate and my pace dropped. Noticing it, I decided to pause for a bit, asked the proctor for a break to go to the bathroom, wash my face, drink water, and eat something.
 
 Upon returning, I managed to get my 4th flag. But, again, the same thing happened: I was stuck until 5 in the morning without getting anything and I started doing silly things due to exhaustion. I told the proctor I was going to sleep, paused my camera, and they stopped my **VPN** connection. I slept like never before (it surprised me, because I was anxious). I woke up around **11:20 AM**, ate, showered, activated the camera, told the proctor I was back, and continued.
 
-There were several moments during the exam where I truly believed I was going to fail. My thoughts played a trick on me, everything had turned black and I said to myself: "I'm going to fail this thing, I'm screwed", "I'll have to pay for the retake" xDDD. (I'm laughing now, but at that moment it was terrible).
+There were several moments during the exam where I truly believed I was going to fail. My thoughts played a trick on me; everything had turned dark and I said to myself: "I'm going to fail this thing, I'm screwed", "I'll have to pay for the retake" xDDD. (I'm laughing now, but at that moment it was terrible).
 
 Recall that the exam consists of **5** machines, and each one has two flags (`local` and `proof`). After several hours without getting anything new, I finally got my fifth flag, but I still had to pwn more things to secure the points. I went back to those machines where I hadn't been able to find the vulnerability for the `proof` and, after hours of trying and trying, I managed to compromise a machine completely. I think at that point I already had the necessary points to pass, but I decided to continue and get another flag just to be safe, in case I made some silly mistake with the report (teslita moment).
 
 Time passed and it seemed like I wouldn't get anything else. But, literally, **30** minutes before the end of the exam, I managed to get an extra flag. I screamed like a madman, danced, and did all those things I do (those who know me know how I am xD). After that, I had to apologize to the **proctor**, hahaha, I felt very embarrassed. I used the remaining time to make sure I took more screenshots, saved command outputs, etc.
 
-The final hour arrived, they cut the **VPN**, I said goodbye to the proctor, and I only had the report left to do…
+The final hour arrived, they cut the **VPN**, I said goodbye to the proctor, and I only had the report left to do...
 
-> I don't remember every single minute of how the exam went, so the times I mentioned are more of an approximation so you don't take them too literally or seriously.
+> I don't remember every single minute of how the exam went, so the times I mentioned are more of an approximation, so don't take them too literally or seriously.
 >
 > The truth is that the **proctored** part isn't that terrible. For people who hate cameras or feel uncomfortable with that, I assure you that after a while you completely forget they are watching you, so don't worry. ✌
 
-After a few minutes, I lay down in bed. Then my mother came in and said: "And you? What are you doing in bed? Do the report!" xD. But I replied that I was tired, so I would do it early tomorrow... (Surely teslita was going to fall asleep quickly and wake up early on a Monday he has off xDD) - I had a feeling I should have advanced something that same night, as I am very slow at documenting.
-![Jerry Meme](./images/jerry-meme.png)
+After a few minutes, I lay down in bed. Then my mother came in and said: 'And you? What are you doing in bed? Do the report!' xD. But I replied that I was tired, so I would do it early tomorrow... (Surely teslita was going to fall asleep quickly and wake up early on a Monday he has off xDD). I had a feeling I should have made some progress that same night, as I am very slow at documenting.
+![Meme about procrastinating the exam report writing](./images/jerry-meme.png)
 
-As expected, I ended up waking up around **11:50 AM** and only started the report at **1:20 PM**. While I was doing it, I realized that I hadn't taken the screenshots with the correct format for the flags section, I had a moment of madness and Windows gave me an error. But as I am a man who solves, I saved myself: I took the screenshots again from Burp however I could, took some from the browser with the tabs I still had open, and that was it, I solved it. The worst part is that it had happened with **3** or **4** flags. After that waste of time, I resumed at full speed with the writing of the findings.
+As expected, I ended up waking up around **11:50 AM** and only started the report at **1:20 PM**. While I was doing it, I realized that I hadn't taken the screenshots with the correct format for the flags section; I had a moment of madness and Windows gave me an error. But as I am a man who solves things, I saved myself: I took the screenshots again from Burp however I could, took some from the browser with the tabs I still had open, and that was it, I solved it. The worst part is that it had happened with **3** or **4** flags. After that waste of time, I resumed at full speed with the writing of the findings.
 
 While I was writing, I saw the time and it was getting closer to the deadline. Again, thoughts that I wouldn't make it entered my mind and I almost lost it, but I told myself: "I can't fail, especially not with the report", so let's get to it.
 
 I finished the report at **7:00 PM**, exported it, gave it a quick review, and at **7:13 PM** I sent it...
 
-I stayed very paranoid (worried) about the format issue, according to me, I hadn't complied and was going to fail because of those silly mistakes. Literally, I spent the whole day thinking about that. Tuesday came and I couldn't concentrate at work. Then my grandfather asked me how it went, I told him about the mistakes I had made with the report, expressed my concern, and I saw the maximum disappointment on his face (as if saying "this guy is an idiot and deserves a slap" 😂).
+I stayed very paranoid (worried) about the format issue; according to me, I hadn't complied and was going to fail because of those silly mistakes. Literally, I spent the whole day thinking about that. Tuesday came and I couldn't concentrate at work. Then my grandfather asked me how it went, I told him about the mistakes I had made with the report, expressed my concern, and I saw the maximum disappointment on his face (as if saying "this guy is an idiot and deserves a slap" 😂).
 
 Days passed and on Wednesday morning I dreamed that the email with the results arrived and that I had passed. Literally, I woke up startled, the first thing I did was look for the email and, obviously, it wasn't there.
-![madness](./images/locura.jpeg)
+![Reaction after waiting for the OSWA exam results](./images/locura.jpeg)
 
-I worked normally and, after work, I fell asleep. I must have woken up around **10:50 PM**, checked the inbox and there it was, the email with the results. I couldn't believe it. I didn't want to open it (the man has serious trust issues 😎). I said in my head: "Alright, open it, anyway, you failed"; I started reading and, well, I passed.
+I worked normally and, after work, I fell asleep. I must have woken up around **10:50 PM**; I checked the inbox and there it was, the email with the results. I couldn't believe it. I didn't want to open it (the man has serious trust issues 😎). I said in my head: 'Alright, open it, anyway, you failed'; I started reading and, well, I passed.
 
 It was a maximum relief and top happiness. I started dancing, put on my Russian hardbass at full blast and that was it, xD. That was my experience with the exam; I hope you liked it and got a laugh out of it.
 
@@ -151,8 +150,8 @@ It was a maximum relief and top happiness. I started dancing, put on my Russian 
 
 ## The Report
 For the report I used [SysReptor](https://sysreptor.com/) and the template, but I made some modifications regarding the color palette, style, and images (as you know, I like the report to look pretty).
-![Original Template](./images/report.png)
-![Custom template](./images/custom.png)
+![Original SysReptor report template for the OSWA certification](./images/report.png)
+![Customized SysReptor report template with modified color palette and style](./images/custom.png)
 
 Still, the version I sent is not **100%** my style and taste, but enough to feel comfortable. Once I have the template modified and with the style I want, I will publish it here (legend has it I said the same thing in a previous review and never uploaded the template).
 
@@ -169,6 +168,7 @@ If you ask me if I recommend this certification: yes, totally. But it depends a 
 
 ## Tips
 Here are some tips that can help you prepare better and pass:
+
 * Take notes.
 * Read the study material carefully.
 * Make structured summaries and focus on the most relevant points.
@@ -187,7 +187,7 @@ Here are some tips that can help you prepare better and pass:
 * Go for a walk or get some fresh air.
 * Don't go in blindly.
 * Prioritize and use your time well.
-* When you feel lost, do a small feedback of what you have and check if you don't have pending flows to review.
+* When you feel lost, do a small recap of what you have and check if you don't have any pending flows to review.
 * Take breaks and stay hydrated.
 * Consistency.
 
@@ -195,27 +195,25 @@ Here are some tips that can help you prepare better and pass:
 
 ## References
 Below I attach some links that helped me and reviews I read at the time.
-* [https://emvee-nl.github.io/posts/OSWA-a-different-course-on-web-attacks/#practice-makes-perfect](https://emvee-nl.github.io/posts/OSWA-a-different-course-on-web-attacks/#practice-makes-perfect)
-* [https://help.offsec.com/hc/en-us/articles/4410105650964-WEB-200-Foundational-Web-Application-Assessments-with-Kali-Linux-OSWA-Exam-Guide](https://help.offsec.com/hc/en-us/articles/4410105650964-WEB-200-Foundational-Web-Application-Assessments-with-Kali-Linux-OSWA-Exam-Guide)
-* [https://www.offsec.com/courses/web-200/](https://www.offsec.com/courses/web-200/)
-* [https://portswigger.net/web-security/all-labs#cross-site-scripting](https://portswigger.net/web-security/all-labs#cross-site-scripting)
-* [https://portswigger.net/web-security/all-labs#cross-site-request-forgery-csrf](https://portswigger.net/web-security/all-labs#cross-site-request-forgery-csrf)
-* [https://portswigger.net/web-security/all-labs#cross-origin-resource-sharing-cors](https://portswigger.net/web-security/all-labs#cross-origin-resource-sharing-cors)
-* [https://portswigger.net/web-security/all-labs#xml-external-entity-xxe-injection](https://portswigger.net/web-security/all-labs#xml-external-entity-xxe-injection)
-* [https://portswigger.net/web-security/all-labs#server-side-request-forgery-ssrf](https://portswigger.net/web-security/all-labs#server-side-request-forgery-ssrf)
-* [https://portswigger.net/web-security/all-labs#os-command-injection](https://portswigger.net/web-security/all-labs#os-command-injection)
-* [https://portswigger.net/web-security/all-labs#server-side-template-injection](https://portswigger.net/web-security/all-labs#server-side-template-injection)
-* [https://portswigger.net/web-security/all-labs#path-traversal](https://portswigger.net/web-security/all-labs#path-traversal)
-* [https://portswigger.net/web-security/all-labs#sql-injection](https://portswigger.net/web-security/all-labs#sql-injection)
-* [https://portswigger.net/web-security/access-control/lab-insecure-direct-object-references](https://portswigger.net/web-security/access-control/lab-insecure-direct-object-references)
-* [https://portswigger.net/web-security/access-control/lab-user-id-controlled-by-request-parameter-with-password-disclosure](https://portswigger.net/web-security/access-control/lab-user-id-controlled-by-request-parameter-with-password-disclosure)
-* [https://developer.mozilla.org/es/docs/Web/](https://developer.mozilla.org/es/docs/Web/)
-* [https://tryhackme.com/challenges](https://tryhackme.com/challenges)
+* [OSWA: A different course on web attacks – emvee-nl](https://emvee-nl.github.io/posts/OSWA-a-different-course-on-web-attacks/#practice-makes-perfect)
+* [WEB-200 OSWA Exam Guide – OffSec Help Center](https://help.offsec.com/hc/en-us/articles/4410105650964-WEB-200-Foundational-Web-Application-Assessments-with-Kali-Linux-OSWA-Exam-Guide)
+* [WEB-200 course page – OffSec](https://www.offsec.com/courses/web-200/)
+* [PortSwigger labs: Cross-Site Scripting (XSS)](https://portswigger.net/web-security/all-labs#cross-site-scripting)
+* [PortSwigger labs: Cross-Site Request Forgery (CSRF)](https://portswigger.net/web-security/all-labs#cross-site-request-forgery-csrf)
+* [PortSwigger labs: Cross-Origin Resource Sharing (CORS)](https://portswigger.net/web-security/all-labs#cross-origin-resource-sharing-cors)
+* [PortSwigger labs: XML External Entity (XXE) injection](https://portswigger.net/web-security/all-labs#xml-external-entity-xxe-injection)
+* [PortSwigger labs: Server-Side Request Forgery (SSRF)](https://portswigger.net/web-security/all-labs#server-side-request-forgery-ssrf)
+* [PortSwigger labs: OS command injection](https://portswigger.net/web-security/all-labs#os-command-injection)
+* [PortSwigger labs: Server-Side Template Injection (SSTI)](https://portswigger.net/web-security/all-labs#server-side-template-injection)
+* [PortSwigger labs: Path traversal](https://portswigger.net/web-security/all-labs#path-traversal)
+* [PortSwigger labs: SQL injection](https://portswigger.net/web-security/all-labs#sql-injection)
+* [PortSwigger lab: Insecure direct object references (IDOR)](https://portswigger.net/web-security/access-control/lab-insecure-direct-object-references)
+* [PortSwigger lab: User ID controlled by request parameter with password disclosure](https://portswigger.net/web-security/access-control/lab-user-id-controlled-by-request-parameter-with-password-disclosure)
+* [MDN Web Docs](https://developer.mozilla.org/es/docs/Web/)
+* [TryHackMe challenges](https://tryhackme.com/challenges)
 
 ---
 
 I hope it serves you and thank you very much for reading ;)
-
-Leave a comment and, anything else, my DM is open. 😜
 
 Being here is also a dream =) Thanks Sikumy_
