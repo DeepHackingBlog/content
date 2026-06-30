@@ -1,10 +1,6 @@
 ---
 name: "Hilario José Bandrés Sasal"
 bio: "SSE Solutions Expert. Interested in offensive security."
-avatar: ""
-website: ""
-github: ""
-twitter: ""
 linkedin: "https://www.linkedin.com/in/hilario-jos%C3%A9-bandr%C3%A9s-sasal-0b9a85264/"
 lang: "en"
 ---
