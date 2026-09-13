@@ -91,7 +91,7 @@ Como se ha mencionado arriba, esta herramienta permite volver a construir la apl
 
 ![Ejecución del comando apktool d para descompilar una aplicación Android](./images/image.png)
 
-![Estructura de carpetas y ficheros generada por Apktool tras descompilar la APK](./images/image%201.png)
+![Estructura de carpetas y ficheros generada por Apktool tras descompilar la APK](./images/image-1.png)
 
 ### Jadx
 
@@ -99,19 +99,19 @@ Como se ha mencionado arriba, esta herramienta permite volver a construir la apl
 
 Si descargamos la versión de interfaz gráfica y la ejecutamos, veremos una ventana como esta:
 
-![Ventana principal de Jadx-gui recién abierta, sin ninguna aplicación cargada](./images/image%202.png)
+![Ventana principal de Jadx-gui recién abierta, sin ninguna aplicación cargada](./images/image-2.png)
 
 Aquí podemos abrir el archivo con extensión `.apk` o directamente arrastrar la aplicación sobre la ventana para abrirla, y ya podremos inspeccionar el código:
 
-![Árbol de clases y paquetes de una APK cargada en Jadx-gui](./images/image%203.png)
+![Árbol de clases y paquetes de una APK cargada en Jadx-gui](./images/image-3.png)
 
 Si seleccionamos un archivo se abrirá una pestaña donde podremos verlo y analizarlo:
 
-![Código Java descompilado de una clase mostrado en una pestaña de Jadx-gui](./images/image%204.png)
+![Código Java descompilado de una clase mostrado en una pestaña de Jadx-gui](./images/image-4.png)
 
 La gran funcionalidad de esta herramienta es su **buscador**. Podemos buscar cadenas de texto por todo el código, lo cual es oro puro para el análisis estático. Términos como `http`, `password`, `token`, `api_key` o `secret` suelen ser un buen punto de partida para encontrar información sensible rápidamente:
 
-![Buscador de texto de Jadx-gui mostrando coincidencias dentro del código de la aplicación](./images/image%205.png)
+![Buscador de texto de Jadx-gui mostrando coincidencias dentro del código de la aplicación](./images/image-5.png)
 
 ### MobSF
 
@@ -124,15 +124,15 @@ Su funcionamiento es sencillo: levanta un servidor local con una interfaz web do
 
 Para su instalación, en primer lugar tendremos que ejecutar el archivo `setup.*` y, una vez se haya completado, lanzar el archivo `run.*` para levantar el servidor web, que quedará accesible en la dirección `http://localhost:8000`.
 
-![Consola mostrando el arranque del servidor web de MobSF en el puerto 8000](./images/image%206.png)
+![Consola mostrando el arranque del servidor web de MobSF en el puerto 8000](./images/image-6.png)
 
 El usuario y la contraseña por defecto son en ambos casos `mobsf`:
 
-![Pantalla de inicio de sesión de la interfaz web de MobSF](./images/image%207.png)
+![Pantalla de inicio de sesión de la interfaz web de MobSF](./images/image-7.png)
 
 Una vez aquí, proporcionaremos la aplicación que queremos analizar, seleccionándola a través del botón de subida o arrastrándola sobre la pantalla. Tras una breve espera, el análisis se habrá realizado correctamente:
 
-![Informe de análisis estático generado por MobSF para una aplicación Android](./images/image%208.png)
+![Informe de análisis estático generado por MobSF para una aplicación Android](./images/image-8.png)
 
 A la izquierda de la pantalla observamos un menú desde el que podemos buscar rápidamente la parte del análisis que más nos interese. Los puntos más importantes que hay que revisar son los siguientes:
 
