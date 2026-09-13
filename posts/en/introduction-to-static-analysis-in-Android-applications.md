@@ -13,8 +13,6 @@ featured: false
 lang: "en"
 ---
 
-## Introduction
-
 Hello again! How are you all doing? It's been a long time! We're back with this post to take our first steps in the static analysis of Android applications. If you remember, in the article about SSL Pinning bypass we already mentioned that dynamic and static analysis are two sides of the same coin and that they complement each other. Well, the time has come to talk about that second part. In this article we are going to explain what this type of analysis consists of, why it is so important and what things we need to keep in mind before getting down to work. To do so, we are going to look at the essential tools we will use to carry it out.
 
 - [What Is Static Analysis of an Application](#what-is-static-analysis-of-an-application)

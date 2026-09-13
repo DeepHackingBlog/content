@@ -13,8 +13,6 @@ featured: false
 lang: "es"
 ---
 
-## Introducción
-
 ¡Hola de nuevo! ¿Qué tal estáis? ¡Cuánto tiempo sin vernos! Volvemos a la carga con este post para dar nuestros primeros pasos en el análisis estático de las aplicaciones Android. Si recordáis, en el artículo sobre la evasión del SSL pinning ya adelantamos que el análisis dinámico y el estático son dos caras de la misma moneda y que se complementan entre sí. Pues bien, ha llegado el momento de hablar de esta segunda parte. En este artículo vamos a explicar en qué consiste este tipo de análisis, por qué es tan importante y qué cosas debemos tener en cuenta antes de ponernos manos a la obra. Para ello, vamos a ver las herramientas indispensables que utilizaremos para llevarlo a cabo.
 
 - [Qué es el análisis estático de una aplicación](#qué-es-el-análisis-estático-de-una-aplicación)
