@@ -1,9 +1,9 @@
 ---
-id: "introduccion-al-analisis-estatico-en-aplicaciones-Android"
+id: "introduccion-al-analisis-estatico-en-aplicaciones-android"
 title: "Introduction to Static Analysis in Android Applications"
 author: "pablo-castillo"
-publishedDate: 2026-09-07
-updatedDate: 2026-09-07
+publishedDate: 2026-09-13
+updatedDate: 2026-09-13
 image: ""
 description: "First steps in the static analysis of Android applications: what it is, how an APK is put together and the essential tools to analyze it."
 categories:

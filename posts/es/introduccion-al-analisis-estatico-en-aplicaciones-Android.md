@@ -1,9 +1,9 @@
 ---
-id: "introduccion-al-analisis-estatico-en-aplicaciones-Android"
+id: "introduccion-al-analisis-estatico-en-aplicaciones-android"
 title: "Introducción al análisis estático en aplicaciones Android"
 author: "pablo-castillo"
-publishedDate: 2026-09-07
-updatedDate: 2026-09-07
+publishedDate: 2026-09-13
+updatedDate: 2026-09-13
 image: ""
 description: "Primeros pasos en el análisis estático de aplicaciones Android: qué es, cómo se compone un APK y las herramientas indispensables para analizarlo."
 categories:
