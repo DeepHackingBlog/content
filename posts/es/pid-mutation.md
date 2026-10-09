@@ -1,7 +1,37 @@
-# PID Mutation: Engañando a Sysmon Parcheando EPROCESS y ETHREAD
-
+---
+id: "pid-mutation"
+title: "PID Mutation: Engañando a Sysmon Parcheando EPROCESS y ETHREAD"
+author: "s12"
+publishedDate: 2026-10-09
+image: ""
+description: "Técnica de PID Mutation mediante BYOVD para falsificar la atribución de procesos en Sysmon parcheando estructuras EPROCESS y ETHREAD en el kernel de Windows."
+categories:
+  - "windows"
+draft: false
+featured: false
+lang: "es"
+---
 
 Buenas a todos, hoy veremos cómo parchear estructuras del kernel en tiempo de ejecución para que Sysmon atribuya toda tu actividad a otro proceso. Antes de entrar en la técnica, vamos a cubrir los conceptos base que necesitas entender si no has trabajado antes con el kernel de Windows.
+
+- [Conceptos previos](#conceptos-previos)
+  - [¿Qué es un primitivo de lectura/escritura en kernel?](#qué-es-un-primitivo-de-lecturaescritura-en-kernel)
+  - [¿Qué es BYOVD?](#qué-es-byovd)
+  - [¿Cómo encuentro un driver vulnerable? LOLDrivers](#cómo-encuentro-un-driver-vulnerable-loldrivers)
+- [La técnica: PID Mutation](#la-técnica-pid-mutation)
+  - [Cómo Windows trackea la identidad de un proceso](#cómo-windows-trackea-la-identidad-de-un-proceso)
+  - [El ataque](#el-ataque)
+- [Implementación](#implementación)
+  - [Paso 1: Resolver offsets dinámicamente](#paso-1-resolver-offsets-dinámicamente)
+  - [Paso 2: Encontrar tu EPROCESS](#paso-2-encontrar-tu-eprocess)
+  - [Paso 3: Parchear EPROCESS.UniqueProcessId](#paso-3-parchear-eprocessuniqueprocessid)
+  - [Paso 4: Parchear todos los ETHREAD.Cid.UniqueProcess](#paso-4-parchear-todos-los-ethreadciduniqueprocess)
+  - [Paso 5: Restaurar el PID antes de salir](#paso-5-restaurar-el-pid-antes-de-salir)
+- [Proof of Concept, Sysmon](#proof-of-concept-sysmon)
+- [Por qué funciona](#por-qué-funciona)
+- [IoCs restantes](#iocs-restantes)
+- [Limitaciones](#limitaciones)
+- [Conclusión](#conclusión)
 
 ---
 
@@ -17,21 +47,17 @@ En la práctica: tu proceso en user mode llama `DeviceIoControl()` con una direc
 
 Esto es el núcleo de la mayoría de técnicas BYOVD.
 
----
-
 ### ¿Qué es BYOVD?
 
-BYOVD (Bring Your Own Vulnerable Driver) consiste en cargar tú mismo un driver legítimo pero con vulnerabilidades conocidas para obtener ejecución en kernel o, en este caso, un primitivo R/W
+BYOVD (Bring Your Own Vulnerable Driver) consiste en cargar tú mismo un driver legítimo pero con vulnerabilidades conocidas para obtener ejecución en kernel o, en este caso, un primitivo R/W.
 
 El driver no es malware. Es un driver real, firmado, que en algún momento fue distribuido por un fabricante legítimo. La vulnerabilidad está en que expone operaciones de memoria sin las validaciones adecuadas.
 
 Windows requiere que todos los drivers estén firmados digitalmente (Driver Signature Enforcement, DSE). Los drivers vulnerables de BYOVD ya están firmados, por lo que los puedes cargar sin desactivar DSE ni hacer nada especial, solo necesitas permisos de administrador.
 
----
-
 ### ¿Cómo encuentro un driver vulnerable? LOLDrivers
 
-[loldrivers.io](https://www.loldrivers.io) es el repositorio de referencia para drivers vulnerables. Mantiene una lista curada con:
+[LOLDrivers](https://www.loldrivers.io) es el repositorio de referencia para drivers vulnerables. Mantiene una lista curada con:
 
 - Nombre del driver y proveedor original
 - CVE o vulnerabilidad asociada
@@ -73,7 +99,7 @@ HANDLE drv = CreateFile(
 
 O más fácil, desde un par de simples comandos en un CMD como Administrador:
 
-```cpp
+```bat
 sc create gdrv binpath="C:\Path\toYour.sys" type="kernel"
 sc start gdrv
 ```
@@ -148,7 +174,6 @@ HANDLE openVulnDriver() {
 	return driver;
 }
 ```
----
 
 ## La técnica: PID Mutation
 
@@ -164,13 +189,9 @@ Windows mantiene el PID de un proceso en tres lugares independientes del kernel:
 
 El punto clave: **estas tres fuentes son independientes**. Parchear una no actualiza automáticamente las otras.
 
----
-
 ### El ataque
 
 Parcheando `EPROCESS.UniqueProcessId` y `ETHREAD.Cid.UniqueProcess` en todos los threads de tu proceso, consigues que Sysmon atribuya toda tu actividad: escrituras de ficheros, queries DNS, procesos hijo, terminación, al proceso que elijas. La telemetría resuelve la imagen incorrecta, el padre incorrecto, y construye un árbol de procesos completamente falso.
-
----
 
 ## Implementación
 
@@ -212,8 +233,6 @@ KernelOffsets ResolveOffsets(DWORD64 ntoskrnlBase) {
 }
 ```
 
----
-
 ### Paso 2: Encontrar tu EPROCESS
 
 Recorremos `PsActiveProcessLinks` desde `PsInitialSystemProcess` (PID 4, System) hasta encontrar nuestro propio proceso por PID:
@@ -246,8 +265,6 @@ DWORD64 FindEPROCESS(HANDLE drv, DWORD64 ntoskrnlBase, KernelOffsets& g_offsets,
 }
 ```
 
----
-
 ### Paso 3: Parchear EPROCESS.UniqueProcessId
 
 Sobreescribimos el campo PID con el PID del proceso víctima (en el PoC, Notepad.exe):
@@ -260,8 +277,6 @@ WritePrimitive(drv,
 ```
 
 Después de este write, las herramientas que recorren `PsActiveProcessLinks` verán el PID mutado. Pero Sysmon todavía reporta el PID original, porque lee de `ETHREAD.Cid`, no de `EPROCESS`.
-
----
 
 ### Paso 4: Parchear todos los ETHREAD.Cid.UniqueProcess
 
@@ -293,8 +308,6 @@ void MutateAllThreadCids(HANDLE drv, DWORD64 eprocess, DWORD64 newPid, KernelOff
 
 `CLIENT_ID.UniqueProcess` está en el offset `+0` del campo `Cid`, así que escribir en `ethread + g_offsets.Cid` parchea exactamente el campo correcto.
 
----
-
 ### Paso 5: Restaurar el PID antes de salir
 
 Si no restauras el PID antes de que el proceso termine, el Event ID 5 de Sysmon (process terminated) mostrará el PID de Notepad, y cuando el Notepad real cierre, no generará Event ID 5. Dos anomalías detectables.
@@ -314,63 +327,52 @@ void RestorePID(HANDLE drv, DWORD64 eprocess, DWORD originalPid, KernelOffsets& 
 }
 ```
 
----
-
-## Proof of Concept , Sysmon
+## Proof of Concept, Sysmon
 
 Probado contra Sysmon v15.21 en Windows 11 24H2. Proceso objetivo: `Notepad.exe` (PID 10720). El PoC muta su propio PID (originalmente 4624) a 10720 y parchea los cuatro threads.
 
 **Event ID 11: File Create**
 
-![Primera imagen](/images/fielwritePIDMutation.png)
-
+![Sysmon Event ID 11 File Create atribuido a Notepad tras PID Mutation](/images/fielwritePIDMutation.png)
 
 **Event ID 22: DNS Query**
 
-![Segunda imagen](/images/DNSqueryPIDMutation.png)
+![Sysmon Event ID 22 DNS Query atribuido a Notepad tras PID Mutation](/images/DNSqueryPIDMutation.png)
 
 La resolución DNS se atribuye a Notepad.
 
 **Event ID 1: Child Process (cmd.exe)**
 
-![Tercera imagen](/images/notepadProcCreatePIDMutation.png)
-
----
+![Sysmon Event ID 1 Process Create mostrando cmd.exe como proceso hijo de Notepad tras PID Mutation](/images/notepadProcCreatePIDMutation.png)
 
 ## Por qué funciona
 
-El driver minifilter de Sysmon recibe callbacks IRP del kernel. Cuando se procesa un IRP, el kernel proporciona el contexto del thread que lo originó,  específicamente `ETHREAD.Cid.UniqueProcess`, como identificador del proceso. Sysmon entonces resuelve la imagen del proceso desde `PspCidTable` usando ese PID.
+El driver minifilter de Sysmon recibe callbacks IRP del kernel. Cuando se procesa un IRP, el kernel proporciona el contexto del thread que lo originó, específicamente `ETHREAD.Cid.UniqueProcess`, como identificador del proceso. Sysmon entonces resuelve la imagen del proceso desde `PspCidTable` usando ese PID.
 
 Como tanto `ETHREAD.Cid` como (indirectamente a través del PID) `PspCidTable` apuntan ahora al PID de Notepad, cada resolución devuelve Notepad. Sysmon nunca lee `EPROCESS.UniqueProcessId` directamente para la atribución de eventos.
-
----
 
 ## IoCs restantes
 
 Esta técnica no es indetectable. Los artefactos que quedan:
 
-**Double termination**: Si no restauras el PID antes de salir, tanto tu proceso como el Notepad real generan un Event ID 5 con el mismo ProcessGuid. Dos eventos terminate para el mismo GUID es detectable.
+**Double termination**: Si no restauras el PID antes de salir, tanto tu proceso como el Notepad real generan un Event ID 5 con el mismo ProcessGuid. Dos eventos terminate para el mismo GUID son detectables.
 
 **Divergencia ETHREAD.Cid vs PspCidTable**: EDRs con sus propios callbacks en kernel que crucen `EPROCESS.UniqueProcessId` contra `PspCidTable` pueden detectar la inconsistencia. Los EDRs de nivel enterprise probablemente hacen esto.
-
----
 
 ## Limitaciones
 
 - Requiere un primitivo R/W en kernel (BYOVD en este PoC)
-- `NtCreateProcess` y otras syscalls que se auto referencian fallan tras la mutación, el kernel valida `PspCidTable` en la creación de procesos
+- `NtCreateProcess` y otras syscalls que se autorreferencian fallan tras la mutación, el kernel valida `PspCidTable` en la creación de procesos
 - No parchea `PspCidTable` directamente, solo es efectivo contra herramientas que leen de `ETHREAD.Cid`
 - Sin sincronización alrededor del write, posible race condition bajo carga de scheduling elevada
 
----
-
 ## Conclusión
 
-Lo que empezó como curiosidad sobre estructuras del kernel resultó en una técnica práctica para falsa atribución en telemetría de Sysmon. El takeaway para defensores: la atribución de procesos en Sysmon depende de `ETHREAD.Cid`, que es independiente tanto de `EPROCESS.UniqueProcessId` como de `PspCidTable`. Parchear las tres fuentes  (o detectar divergencias entre ellas) es lo que separa un EDR robusto de una herramienta que puede ser engañada con unos pocos writes en kernel
+Lo que empezó como curiosidad sobre estructuras del kernel resultó en una técnica práctica para falsa atribución en telemetría de Sysmon. El takeaway para defensores: la atribución de procesos en Sysmon depende de `ETHREAD.Cid`, que es independiente tanto de `EPROCESS.UniqueProcessId` como de `PspCidTable`. Parchear las tres fuentes (o detectar divergencias entre ellas) es lo que separa un EDR robusto de una herramienta que puede ser engañada con unos pocos writes en kernel.
 
-El PoC está disponible en: [github.com/S12cybersecurity/PIDMutation](https://github.com/S12cybersecurity/PIDMutation)
+El PoC está disponible en: [repositorio del PoC en GitHub](https://github.com/S12cybersecurity/PIDMutation)
 
-Post original en inglés: [medium.com/@s12deff/process-id-mutation-via-byovd](https://medium.com/@s12deff/process-id-mutation-via-byovd)
+Post original en inglés: [Process ID Mutation via BYOVD en Medium](https://medium.com/@s12deff/process-id-mutation-via-byovd)
 
 ---
 
