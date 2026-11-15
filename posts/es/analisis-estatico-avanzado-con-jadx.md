@@ -54,17 +54,17 @@ En el caso de *InsecureShop*, una primera lectura del manifest ya nos deja basta
 
 Pero si hay algo que llama la atención son las dos activities que gestionan *WebViews*. Por un lado, la ***WebViewActivity***, que define un deeplink con el esquema `insecureshop://com.insecureshop` y la categoría `BROWSABLE`, lo que significa que **podremos invocarla desde el navegador del dispositivo con una simple URL**. Por otro, la ***WebView2Activity***, que se expone a través de una action personalizada (`com.insecureshop.action.WEBVIEW`). Fijaos que ninguna de las dos lleva el atributo `android:exported="true"`, pero ambas están exportadas por el simple hecho de declarar un `<intent-filter>`, tal y como acabamos de explicar:
 
-![Declaración en el manifest de WebViewActivity con deeplink insecureshop:// y de WebView2Activity con su action personalizada](images/image%201.png)
+![Declaración en el manifest de WebViewActivity con deeplink insecureshop:// y de WebView2Activity con su action personalizada](images/image 1.png)
 
 **2. De los componentes al código.** Una vez identificados los componentes que nos interesan (las puertas de entrada), saltamos a su código para ver cómo tratan la información que reciben. Aquí es donde entra en juego la idea de *source* y *sink* que veremos en el siguiente apartado. Nos interesa especialmente cómo se recuperan los datos que llegan del exterior, con llamadas del tipo `getIntent()`, `getStringExtra()`, `getData()`, etc.
 
 **3. Búsqueda de información sensible.** En paralelo, hacemos un barrido con el buscador (recordad, el `Ctrl+Shift+F` que vimos en el artículo anterior) rastreando términos jugosos como `http`, `password`, `token`, `api_key`, `secret` o `key`. Como ya comentamos, es habitual que los desarrolladores dejen credenciales *hardcodeadas*, URLs de servidores internos y *endpoints* olvidados dentro del propio código.
 
-![Búsqueda global de texto en Jadx mostrando las coincidencias de https:// en el código de InsecureShop](images/image%202.png)
+![Búsqueda global de texto en Jadx mostrando las coincidencias de https:// en el código de InsecureShop](images/image 2.png)
 
 **4. Revisión de recursos y assets.** No todo está en el código. La pestaña de *Resources* guarda el `strings.xml`, ficheros de configuración y, en ocasiones, sorpresas dentro de la carpeta `assets/`. Merece la pena echar siempre un vistazo.
 
-![Fichero strings.xml de InsecureShop abierto desde resources.arsc en Jadx](images/image%203.png)
+![Fichero strings.xml de InsecureShop abierto desde resources.arsc en Jadx](images/image 3.png)
 
 ## Xrefs: seguir el rastro en lugar de leer código
 
@@ -74,7 +74,7 @@ La idea es sencilla. El buscador que vimos en el artículo anterior nos da **pun
 
 En *Jadx*, sobre cualquier clase, método, campo o constante, podemos pulsar la tecla `X` (o botón derecho → *Find Usage*) para que nos muestre **todos los lugares desde los que se referencia ese elemento**. Acostumbraos a usar la `X` incluso más que el `Ctrl+Shift+F`, porque es lo que marca la diferencia entre analizar de verdad y dar palos de ciego.
 
-![Menú contextual de Jadx con la opción Find Usage (tecla X) sobre la clase WebView2Activity](images/image%204.png)
+![Menú contextual de Jadx con la opción Find Usage (tecla X) sobre la clase WebView2Activity](images/image 4.png)
 
 ### Source y sink: los dos extremos del camino
 
@@ -91,7 +91,7 @@ Vamos a aplicarlo sobre la ***WebViewActivity*** que localizamos en el manifest.
 
 El siguiente paso es saltar a su código y ver qué hace con lo que recibe. Al abrir la clase, encontramos que recupera los datos del *intent* que la ha lanzado y, tras una comprobación, termina cargando una URL en el *WebView*:
 
-![Método onCreate de WebViewActivity mostrando el flujo desde getData() hasta loadUrl()](images/image%205.png)
+![Método onCreate de WebViewActivity mostrando el flujo desde getData() hasta loadUrl()](images/image 5.png)
 
 Aquí es donde las xrefs brillan. En este caso concreto, el recorrido *hacia atrás* de la URL (del `loadUrl()` hasta el `getData()` inicial) es corto y lo podemos seguir con la vista, ya que todo ocurre dentro del mismo `onCreate`. Pero fijaos en la línea 108, justo debajo del `loadUrl()`:
 
@@ -101,7 +101,7 @@ Prefs.INSTANCE.getInstance(this).setData(data);
 
 La aplicación no se limita a cargar la URL: además **la guarda de forma persistente** mediante `Prefs.setData()`. Y aquí surge la pregunta que no podemos responder a ojo: **¿quién más lee ese dato después?** Este es el otro sentido en el que trabajan las xrefs. Antes perseguíamos el dato *hacia atrás* para saber de dónde venía; ahora lo perseguimos *hacia adelante* para ver a dónde llega. Para averiguarlo, nos colocamos sobre el método `setData` y pulsamos `X`:
 
-![Resultado de Find Usage sobre setData con las llamadas desde PrivateActivity y WebViewActivity](images/image%206.png)
+![Resultado de Find Usage sobre setData con las llamadas desde PrivateActivity y WebViewActivity](images/image 6.png)
 
 El resultado es revelador. *Jadx* nos muestra que `setData` se invoca desde **dos** sitios: la propia `WebViewActivity` (donde estamos) y, atención, la `com.insecureshop.PrivateActivity`. Es decir, el dato que un atacante mete a través del deeplink no se queda aquí, sino que viaja hasta otra activity completamente distinta a través de las `SharedPreferences`. Esto es algo que jamás habríamos descubierto leyendo la `WebViewActivity` de arriba abajo, y es la esencia de por qué las xrefs son tan potentes: nos permiten ver cómo circula un dato **por toda la aplicación**, saltando de una clase a otra.
 
@@ -121,7 +121,7 @@ Aquí conviene separar desde el principio dos cosas que mucha gente confunde: la
 
 *Jadx* incorpora un desofuscador que se activa en *Archivo → Preferencias → Desofuscación*. Lo primero que hay que entender es qué podéis esperar de él, porque el nombre genera muchas expectativas equivocadas.
 
-![Ventana de preferencias de Jadx con la opción de desofuscación activada](images/image%207.png)
+![Ventana de preferencias de Jadx con la opción de desofuscación activada](images/image 7.png)
 
 **El desofuscador no recupera los nombres originales del código**. Eso es completamente imposible: cuando un desarrollador ofusca su aplicación con ProGuard o R8, los nombres originales se destruyen y no quedan almacenados en ninguna parte de la APK. Lo que hace *Jadx* es algo más modesto pero igualmente útil: asigna nombres estables y únicos a los elementos ofuscados, de forma que puedas navegar sin volverte loco. Es la diferencia entre tener quince clases llamadas `a`, `b`, `c` que se repiten por todos lados, y tener nombres del tipo `C0001a`, `C0002b`, que al menos son inequívocos y te permiten seguirles la pista.
 
@@ -131,7 +131,7 @@ Aquí conviene separar desde el principio dos cosas que mucha gente confunde: la
 
 Si el desofuscador es la herramienta automática, el renombrado manual es el trabajo artesanal, y es donde realmente construimos nuestro mapa de la aplicación. La mecánica es simple: nos colocamos sobre cualquier clase, método, campo o variable, pulsamos la tecla `N` (o botón derecho → *Rename*) y le ponemos un nombre que tenga sentido para nosotros.
 
-![Diálogo de renombrado de Jadx sobre la clase WebViewActivity](images/image%208.png)
+![Diálogo de renombrado de Jadx sobre la clase WebViewActivity](images/image 8.png)
 
 La clave está en que *Jadx* propaga el cambio a todas las referencias de ese elemento de forma automática. Es decir, cada vez que renombramos algo, todo el código que lo utilizaba queda al instante más legible. Y aquí se produce un efecto bola de nieve: conforme vamos entendiendo y renombrando, `a.b.c` pasa a ser `CryptoHelper`, su método `d(String, String)` pasa a ser `encryptPayload`, y de repente una clase que era ilegible empieza a contar una historia. Este es, precisamente, el proceso que convierte una aplicación ofuscada de "imposible de leer" a "lenta pero perfectamente abordable".
 
@@ -139,7 +139,7 @@ Como InsecureShop no está ofuscada, sus nombres ya son descriptivos y no necesi
 
 Fijaos en el siguiente fragmento de su `MainActivity`. Nada más abrirlo nos encontramos con clases y métodos de una sola letra (`c.a()`, `c.b()`, `c.c()`, `b.a()`, `a.a()`) que, a priori, no nos dicen absolutamente nada:
 
-![MainActivity ofuscada de UnCrackable Level 1 con las llamadas c.a(), c.b(), c.c() y b.a() resaltadas](images/image%209.png)
+![MainActivity ofuscada de UnCrackable Level 1 con las llamadas c.a(), c.b(), c.c() y b.a() resaltadas](images/image 9.png)
 
 Y, sin embargo, la propia aplicación se delata. Aquí es donde entra en juego lo que os comentaba: la ofuscación no puede tocar las cadenas de texto. Si observamos el `onCreate`, vemos que el resultado de `c.a() || c.b() || c.c()` desemboca en un mensaje `"Root detected!"`, y que `b.a()` hace lo propio con `"App is debuggable!"`. Con solo eso ya podemos deducir que ese paquete `c` contiene las comprobaciones de root y que `b.a()` es la comprobación de *debuggable*, así que podríamos renombrarlos a algo como `RootChecker`, `isDeviceRooted()` o `isDebuggable()`. De un vistazo, y sin ejecutar nada, hemos empezado a reconstruir el mapa de la aplicación.
 
@@ -175,11 +175,11 @@ Y aquí viene lo importante, que no es casualidad: las clases que fallan al desc
 
 Lo primero que os recomiendo es activar la opción *Show inconsistent code* dentro de las preferencias de descompilación (*Archivo → Preferencias → Descompilación*). Con ella marcada, *Jadx* os mostrará su mejor intento de reconstrucción aunque el resultado sea imperfecto, en lugar de esconderos el método directamente. No será un Java bonito, pero muchas veces es suficiente para entender la lógica:
 
-![Preferencias de descompilación de Jadx con la opción Mostrar código inconsistente activada](images/image%2010.png)
+![Preferencias de descompilación de Jadx con la opción Mostrar código inconsistente activada](images/image 10.png)
 
 Cuando ni con eso conseguimos sacar nada en claro, toca bajar un peldaño y leer el *smali* directamente. El smali, como comentamos en el artículo anterior, es esa especie de "ensamblador" del *bytecode* de Dalvik. Es bastante más árido que el Java, pero tiene una ventaja enorme: es lo que la aplicación ejecuta de verdad, así que no miente ni se queda a medias. En *Jadx* podemos ver el smali de cualquier clase seleccionando la pestaña correspondiente en el panel de código:
 
-![Código smali de MainActivity de UnCrackable Level 1 en la pestaña Smali de Jadx](images/image%2011.png)
+![Código smali de MainActivity de UnCrackable Level 1 en la pestaña Smali de Jadx](images/image 11.png)
 
 ### Por qué esto os importa: el enlace con Frida
 
