@@ -2,8 +2,8 @@
 id: "analisis-estatico-avanzado-con-jadx"
 title: "Advanced Static Analysis with Jadx"
 author: "pablo-castillo"
-publishedDate: 2026-10-16
-updatedDate: 2026-10-16
+publishedDate: 2026-11-16
+updatedDate: 2026-11-16
 image: ""
 description: "Advanced static code analysis of Android applications with Jadx"
 categories:
@@ -21,7 +21,7 @@ I assume you already have *Jadx* installed and that you know how to open an *APK
 
 Throughout the article we are going to work with a vulnerable application called ***InsecureShop***, designed precisely to practice this kind of analysis. You can download it from its official website:
 
-- [InsecureShop, the vulnerable Android application](https://insecureshopapp.com/)
+- [Insecure Shop App](https://insecureshopapp.com/)
 
 The reason for choosing this application is that it has just the right amount of vulnerabilities and components to make the walkthrough entertaining; it is not as simple as some other vulnerable applications whose manual analysis would be very limited, so we will be able to show off a bit more with the different features *Jadx* has to offer.
 
@@ -84,7 +84,6 @@ Before going further, it is worth internalizing two concepts that you will hear 
 - The **sink** is the point where that data ends up doing something dangerous. We are talking about calls such as `loadUrl()` in a *WebView*, `Runtime.exec()` to execute commands, `rawQuery()` in a database, file operations, etc.
 
 > A vulnerability, in most cases, is nothing more than data that travels from a *source* to a *sink* without anyone validating it along the way. And xrefs are what allow us to follow that journey without having to read the entire class and guess.
-> 
 
 ### A Real Case in InsecureShop
 
@@ -127,7 +126,6 @@ Here it is worth separating from the start two things that many people confuse: 
 **The deobfuscator does not recover the original names of the code**. That is completely impossible: when a developer obfuscates their application with ProGuard or R8, the original names are destroyed and are not stored anywhere in the APK. What *Jadx* does is something more modest but equally useful: it assigns stable and unique names to the obfuscated elements, so that you can navigate without going crazy. It is the difference between having fifteen classes called `a`, `b`, `c` repeated everywhere, and having names like `C0001a`, `C0002b`, which are at least unambiguous and allow you to keep track of them.
 
 > There is a practical detail that will save you some trouble: decide whether to enable the deobfuscator **at the beginning** of the audit and do not touch it again. If you enable or disable it halfway through the analysis, the generated names change, and all the notes you have been taking (or the renames you have made) will no longer match. It is one of those things you only learn when it happens to you once and you lose half an afternoon.
-> 
 
 ### Manual Renaming: This Is Where the Real Work Is
 
@@ -221,9 +219,9 @@ Thank you for being on the other side. Cheers! 🙂
 
 ## References
 
-- [Jadx on GitHub](https://github.com/skylot/jadx)
-- [Jadx official wiki](https://github.com/skylot/jadx/wiki)
-- [InsecureShop, the vulnerable Android application](https://insecureshopapp.com/)
-- [UnCrackable App for Android Level 1 (OWASP MASTG)](https://github.com/OWASP/mastg/tree/master/Crackmes/Android/Level_01)
-- [OWASP Mobile Application Security Testing Guide (MASTG)](https://mas.owasp.org/MASTG/)
-- [Frida JavaScript API documentation](https://frida.re/docs/javascript-api/)
+- [Jadx GitHub](https://github.com/skylot/jadx)
+- [Jadx GitHub Wiki](https://github.com/skylot/jadx/wiki)
+- [Insecure Shop App](https://insecureshopapp.com/)
+- [OWASP Crackmes Android - Level 01](https://github.com/OWASP/mastg/tree/master/Crackmes/Android/Level_01)
+- [MASTG](https://mas.owasp.org/MASTG/)
+- [Frida Doc - JavaScript API](https://frida.re/docs/javascript-api/)

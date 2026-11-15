@@ -2,8 +2,8 @@
 id: "analisis-estatico-avanzado-con-jadx"
 title: "Análisis estático avanzado con Jadx"
 author: "pablo-castillo"
-publishedDate: 2026-10-16
-updatedDate: 2026-10-16
+publishedDate: 2026-11-16
+updatedDate: 2026-11-16
 image: ""
 description: "Análisis de código estático avanzado de aplicaciones Android con Jadx"
 categories:
@@ -21,7 +21,7 @@ Doy por hecho que ya tenéis *Jadx* instalado y que sabéis abrir una *APK* y mo
 
 Para todo el artículo vamos a trabajar con una aplicación vulnerable llamada ***InsecureShop***, diseñada precisamente para practicar este tipo de análisis. Podéis descargarla desde su web oficial:
 
-- [https://insecureshopapp.com/](https://insecureshopapp.com/)
+- [Insecure Shop App](https://insecureshopapp.com/)
 
 La razón de elegir esta aplicación es que tiene la cantidad justa de vulnerabilidades y componentes para que el recorrido sea entretenido; no es demasiado simple como algunas otras aplicaciones vulnerables cuyo análisis manual sería muy reducido, por lo que podremos lucirnos un poco más con el uso de las distintas funcionalidades que posee *Jadx*.
 
@@ -84,7 +84,6 @@ Antes de seguir conviene interiorizar dos conceptos que vais a escuchar constant
 - El **sink** (sumidero) es el punto donde ese dato acaba haciendo algo peligroso. Hablamos de llamadas como `loadUrl()` en un *WebView*, `Runtime.exec()` para ejecutar comandos, `rawQuery()` en una base de datos, operaciones de fichero, etc.
 
 > Una vulnerabilidad, en la mayoría de los casos, no es más que un dato que viaja desde un *source* hasta un *sink* sin que nadie lo valide por el camino. Y las xrefs son lo que nos permite recorrer ese viaje sin tener que leernos la clase entera adivinando.
-> 
 
 ### Un caso real en InsecureShop
 
@@ -127,7 +126,6 @@ Aquí conviene separar desde el principio dos cosas que mucha gente confunde: la
 **El desofuscador no recupera los nombres originales del código**. Eso es completamente imposible: cuando un desarrollador ofusca su aplicación con ProGuard o R8, los nombres originales se destruyen y no quedan almacenados en ninguna parte de la APK. Lo que hace *Jadx* es algo más modesto pero igualmente útil: asigna nombres estables y únicos a los elementos ofuscados, de forma que puedas navegar sin volverte loco. Es la diferencia entre tener quince clases llamadas `a`, `b`, `c` que se repiten por todos lados, y tener nombres del tipo `C0001a`, `C0002b`, que al menos son inequívocos y te permiten seguirles la pista.
 
 > Hay un detalle práctico que os va a ahorrar disgustos: decidid si activáis el desofuscador **al principio** de la auditoría y no lo toquéis más. Si lo activáis o desactiváis a mitad de análisis, los nombres generados cambian, y todas las notas que hayáis ido tomando (o los renombrados que hayáis hecho) dejarán de cuadrar. Es de esas cosas que solo aprendes cuando te pasa una vez y pierdes media tarde.
-> 
 
 ### El renombrado manual: aquí está el trabajo de verdad
 
@@ -221,9 +219,9 @@ Gracias por estar al otro lado. ¡Un abrazo! 🙂
 
 ## Referencias
 
-- [https://github.com/skylot/jadx](https://github.com/skylot/jadx)
-- [https://github.com/skylot/jadx/wiki](https://github.com/skylot/jadx/wiki)
-- [https://insecureshopapp.com/](https://insecureshopapp.com/)
-- [https://github.com/OWASP/mastg/tree/master/Crackmes/Android/Level_01](https://github.com/OWASP/mastg/tree/master/Crackmes/Android/Level_01)
-- [https://mas.owasp.org/MASTG/](https://mas.owasp.org/MASTG/)
-- [https://frida.re/docs/javascript-api/](https://frida.re/docs/javascript-api/)
+- [Jadx GitHub](https://github.com/skylot/jadx)
+- [Jadx GitHub Wiki](https://github.com/skylot/jadx/wiki)
+- [Insecure Shop App](https://insecureshopapp.com/)
+- [OWASP Crackmes Android - Level 01](https://github.com/OWASP/mastg/tree/master/Crackmes/Android/Level_01)
+- [MASTG](https://mas.owasp.org/MASTG/)
+- [Frida Doc - JavaScript API](https://frida.re/docs/javascript-api/)
